@@ -1,0 +1,160 @@
+body{
+  padding: 0px;
+  margin: 0px;
+  height: 100%;
+  width: 100%;
+  
+  background-image: url("./Images/ZugBild.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  text-align: center;
+  display: block;
+}
+
+.container {
+  margin-top: 30px !important;
+  
+  vertical-align: middle;
+  margin: auto;
+  box-sizing: border-box;
+  width: 690px;
+  height: 90%;
+  text-align: center;
+  
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: repeat(6, 100px);
+  grid-auto-rows: 100px;
+  
+  padding: 20px;
+}
+
+.Door {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: crimson;
+  color: white;
+  
+  border-radius: 20px;
+  background: linear-gradient(160deg, crimson , rgb(104, 56, 66));
+  transition: border-width 1s ease;
+  font-family: 'Spicy Rice', cursive;
+  font-size: 17px;
+  text-align: center;
+  
+}
+
+.open {
+  border-width: 0;
+  color: crimson;
+}
+
+h2 {
+  grid-column-start: 1;
+  grid-column-end: -1;
+  
+  font-family: 'Spicy Rice', cursive;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width:100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.modal-main {
+ 
+  position:fixed;
+  background: white;
+  background-size: cover;
+  width: 80%;
+  height: 80%;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+}
+
+
+.display-block {
+  display: block;
+}
+
+.display-none {
+  display: none;
+}
+
+.closeButton{
+
+    
+  width: 80%;
+  height: 18%;
+  padding: auto;
+  grid-area: button;
+  margin: auto;
+  font-family: "Mountains of Christmas";
+  font-size: 20px;
+  background: #a30b2afb;
+  
+}
+
+
+
+.modal-main{
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+  grid-template-rows: 20% 60% 20%;
+  
+  grid-template-areas: 
+    "header header header header"
+    "main main main main"
+    "button button button button";
+
+}
+
+.modalTitle {
+  font-family: "Mountains of Christmas";
+  font-size: 30px;
+  color: rgb(0, 0, 0);
+  grid-area: header;
+}
+
+.contentBox{
+
+  background: white;
+  grid-area: main;
+  width: 80%;
+  margin: auto;
+  height: 100%;
+}
+
+.ytVideo{
+  
+  height: 100%;
+
+}
+
+.imgTag{
+  height: 100%;
+}
+
+
+.futureDoor{
+  background-image: url(./Images/landscape.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  height: 100%;
+  width: 100%;
+  margin: auto;
+  
+}
+
+.iframeRezept{
+  width: 100%;
+  height: 100%;
+}
