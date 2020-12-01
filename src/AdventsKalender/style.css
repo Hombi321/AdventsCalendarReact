@@ -36,7 +36,7 @@ body{
   justify-content: center;
   background: crimson;
   color: white;
-  
+  cursor: pointer;
   border-radius: 20px;
   background: linear-gradient(160deg, crimson , rgb(104, 56, 66));
   transition: border-width 1s ease;
