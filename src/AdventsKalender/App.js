@@ -27,7 +27,7 @@ class App extends React.Component {
 
         const cookies = new Cookies();
         cookies.set('testCookie', 'test', {path: '/'});
-        console.log("Hallo zusammen"+cookies.get('testCookie'));
+        
         
         DataFromREST.testConnection();
         
@@ -62,7 +62,7 @@ class App extends React.Component {
         <DoorModal />
        
         DataFromREST.postData(date).then(res => {
-            console.log(res);
+            
             
             this.setState({
                 modalData: res.data,
@@ -70,14 +70,14 @@ class App extends React.Component {
             });
             
            
-            console.log("Fertig")
+           
             
         
         })
         
     }
     render(modal) {
-        console.log("Das ist die Mesage"+modal)
+        
         const doors = this.state.adventsData.map(item => {
             
        return(<Door key={item.id} item={item} handleClick={this.handleDate}/>)
