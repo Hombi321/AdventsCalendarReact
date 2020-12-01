@@ -3,7 +3,7 @@ import React from 'react'
 export default class DoorModal{
 
 render(){
-    alert("Hanspeter ist ein Ehrenmann")
+    
 
     return(
         <div id="myModal" className="modal">

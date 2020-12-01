@@ -4,6 +4,7 @@ import AdventData from './DoorData.json'
 import DataFromREST from './DataFromREST'
 import DoorModal from './DoorModal'
 import Modal from './Modal'
+import Cookies from 'universal-cookie';
 
 
 class App extends React.Component {
@@ -23,8 +24,14 @@ class App extends React.Component {
     }
     
     componentDidMount(){
+
+        const cookies = new Cookies();
+        cookies.set('testCookie', 'test', {path: '/'});
+        console.log("Hallo zusammen"+cookies.get('testCookie'));
         
-        DataFromREST.getData().then(response => {
+        DataFromREST.testConnection();
+        
+        DataFromREST.getInitialData().then(response => {
             
             const door = response.data;
             this.setState({adventsData: response.data})
