@@ -6,7 +6,7 @@ import Cookies from 'universal-cookie';
 
 
 function Modal (props : any) {
-    console.log(props.dataTransfered)
+    
 
     const showHideClassName = props.show ? "modal display-block" : "modal display-none";
 
@@ -31,7 +31,7 @@ function Modal (props : any) {
      }
     
     
-    console.log(dataType)
+    
     if(dataType === "Video"){
       linkToSource = props.dataTransfered.link
 
