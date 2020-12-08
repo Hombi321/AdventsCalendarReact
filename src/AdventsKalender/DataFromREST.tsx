@@ -8,14 +8,17 @@ import { AxiosResponse, AxiosError } from 'axios'
 const DOOR_DATA_LINK_POST = 'https://adventskalender-backend.herokuapp.com/advent/post'
 const DOOR_DATA_LINK_INITIAL = 'https://adventskalender-backend.herokuapp.com/advent/initial'
 const DOOR_DATA_LINK_TESTCONNECTION = 'https://adventskalender-backend.herokuapp.com'
+const DOOR_DATA_LINK_TESTFORDATE = 'https://adventskalender-backend.herokuapp.com/date'
 // Local Variables Change bevore Commit
 const L_DOOR_DATA_LINK_POST = 'http://localhost:8080/advent/post'
 const L_DOOR_DATA_LINK_INITIAL = 'http://localhost:8080/advent/initial'
 const L_DOOR_DATA_LINK_TESTCONNECTION = 'http://localhost:8080/22'
+const L_DOOR_DATA_LINK_TESTFORDATE = 'http://localhost:8080/advent/date'
 
 
 class DataFromREST {
 
+    
     testConnection(){
 
     }

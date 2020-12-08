@@ -1,3 +1,7 @@
+
+html{
+  height: 100%;
+}
 body{
   padding: 0px;
   margin: 0px;
@@ -7,7 +11,9 @@ body{
   background-image: url("./Images/ZugBild.jpg");
   background-repeat: no-repeat;
   background-attachment: fixed;
-  background-position: center;
+  background-position: bottom;
+ 
+  background-size: cover;
   text-align: center;
   display: block;
 }
@@ -45,7 +51,21 @@ body{
   text-align: center;
   
 }
-
+.OpenedDoor {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: green;
+  color: white;
+  cursor: pointer;
+  border-radius: 20px;
+  background: linear-gradient(160deg, green , rgb(104, 56, 66));
+  transition: border-width 1s ease;
+  font-family: 'Spicy Rice', cursive;
+  font-size: 17px;
+  text-align: center;
+  
+}
 .open {
   border-width: 0;
   color: crimson;
@@ -90,9 +110,9 @@ h2 {
 
 .closeButton{
 
-    
+  cursor: pointer;  
   width: 80%;
-  height: 18%;
+  height: 23%;
   padding: auto;
   grid-area: button;
   margin: auto;
@@ -139,7 +159,9 @@ h2 {
 }
 
 .imgTag{
-  height: 100%;
+  width: 100%;
+  max-width: 580px;
+  height: auto;
 }
 
 

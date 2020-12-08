@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Door from './Door'
 import AdventData from './DoorData.json'
 import DataFromREST from './DataFromREST'
-import DoorModal from './DoorModal'
+//
 import Modal from './Modal'
 import Cookies from 'universal-cookie';
 
@@ -15,20 +15,37 @@ class App extends React.Component {
         this.state = {
             show : false,
             adventsData:[],
-        modalData: null        }
+        modalData: null,
+        cookie : new Cookies()       }
         this.handleDate = this.handleDate.bind(this)
         this.componentDidMount = this.componentDidMount(this)
         this.hideModal = this.hideModal.bind(this)
+        this.addDoorToCookie = this.addDoorToCookie.bind(this)
         
+        
+        
+    }
+
+    addDoorToCookie(id){
+
+        let cookie =  this.state.cookie
+        let array = cookie.get('oppenedDoors') != undefined ? cookie.get('oppenedDoors') : []
+        
+        if(!array.includes(id)){
+        array.push(id)
+        }
+        console.log(array)
+        
+        cookie.set('oppenedDoors', array);
+
+        console.log(cookie.get('oppenedDoors'))
         
     }
     
     componentDidMount(){
+        const cookie = new Cookies();
 
-        const cookies = new Cookies();
-        cookies.set('testCookie', 'test', {path: '/'});
-        
-        
+    
         DataFromREST.testConnection();
         
         DataFromREST.getInitialData().then(response => {
@@ -59,12 +76,16 @@ class App extends React.Component {
     
     handleDate(date){
 
-        <DoorModal />
+        
        
         DataFromREST.postData(date).then(res => {
             
-            
+            if(res.data.type !== 'FAIL'){
+                this.addDoorToCookie(res.data.id)
+            }
+            console.log(res.data)
             this.setState({
+                
                 modalData: res.data,
                 show: true
             });
@@ -80,7 +101,7 @@ class App extends React.Component {
         
         const doors = this.state.adventsData.map(item => {
             
-       return(<Door key={item.id} item={item} handleClick={this.handleDate}/>)
+       return(<Door key={item.id} item={item} handleClick={this.handleDate} addToCookie={this.addDoorToCookie} doorData={this.state.cookie}/>)
         
         
     })
