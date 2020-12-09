@@ -3,7 +3,10 @@ import Cookies from 'universal-cookie';
 
 
 
-
+interface Video {
+  type: string;
+  link: string;
+}
 
 function Modal (props : any) {
     

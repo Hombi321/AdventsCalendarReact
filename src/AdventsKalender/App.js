@@ -36,7 +36,10 @@ class App extends React.Component {
         }
         console.log(array)
         
-        cookie.set('oppenedDoors', array);
+        cookie.set('oppenedDoors', array ,{
+            path: '/',
+            expires: new Date(Date.now()+2592000000),
+        });
 
         console.log(cookie.get('oppenedDoors'))
         
@@ -83,7 +86,7 @@ class App extends React.Component {
             if(res.data.type !== 'FAIL'){
                 this.addDoorToCookie(res.data.id)
             }
-            console.log(res.data)
+            
             this.setState({
                 
                 modalData: res.data,
