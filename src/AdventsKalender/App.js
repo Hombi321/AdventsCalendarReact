@@ -34,7 +34,7 @@ class App extends React.Component {
         if(!array.includes(id)){
         array.push(id)
         }
-        console.log(array)
+       
         
         cookie.set('oppenedDoors', array ,{
             path: '/',
