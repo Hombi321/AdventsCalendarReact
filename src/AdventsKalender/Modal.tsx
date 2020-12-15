@@ -2,7 +2,13 @@ import React from 'react'
 import Cookies from 'universal-cookie';
 
 
+interface futureDoor{
+  type: string;
+  link: string;
+  message: string;
+  id: number;
 
+}
 interface Video {
   type: string;
   link: string;

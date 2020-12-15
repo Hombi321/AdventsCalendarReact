@@ -1,14 +1,35 @@
 import { access } from 'fs'
+import { stringify } from 'querystring'
 import React from 'react'
+import { getDefaultCompilerOptions } from 'typescript'
+import Cookies, { Cookie } from 'universal-cookie'
 import DataFromREST from './DataFromREST'
 
-const Door = (props : any) => {
+export interface Door{
+id:number
+type: 'FAIL' | 'Bild' | 'Video' | 'Rezept'
+link: string
+date: Date
+}
 
-    var date = props.item.date
-    var number = date.substring(10,8)
-    number += "." //Adding . to the Number, for displaying on front of the door
-    var classNameVariable = "Door" //Chose the Style of the Door, Default: Door. Posibilities: Door, OppenedDoor
+export interface DoorProps{
+    item: Door
+    doorData: Cookies
     
+    checkDate: (date : string) => any
+}
+
+
+const Door = (props : DoorProps) => {
+   
+    
+    var date = new Date(props.item.date);
+    var date2 : string = date.toISOString();
+    date2 = date2.substring(0,10);
+    var number = new Date(props.item.date).getDate()+'.'
+   // number += "." //Adding . to the Number, for displaying on front of the door
+    var classNameVariable = "Door" //Chose the Style of the Door, Default: Door. Posibilities: Door, OppenedDoor
+   // props.checkDate()
     
 
     
@@ -30,7 +51,7 @@ const Door = (props : any) => {
 
     //return the Door
     return (
-        <section className={classNameVariable} onClick={() => (props.handleClick(props.item.date))}>
+        <section className={classNameVariable} onClick={ () => props.checkDate(date2)}>
             
            
             <h3>{number}</h3>

@@ -7,6 +7,7 @@ import Modal from './Modal'
 import Cookies from 'universal-cookie';
 
 
+
 class App extends React.Component {
 
     
@@ -21,6 +22,7 @@ class App extends React.Component {
         this.componentDidMount = this.componentDidMount(this)
         this.hideModal = this.hideModal.bind(this)
         this.addDoorToCookie = this.addDoorToCookie.bind(this)
+        this.checkDates = this.checkDates.bind(this)
         
         
         
@@ -41,7 +43,7 @@ class App extends React.Component {
             expires: new Date(Date.now()+2592000000),
         });
 
-        console.log(cookie.get('oppenedDoors'))
+       
         
     }
     
@@ -62,7 +64,7 @@ class App extends React.Component {
         
         var returnString = ("<div className =\"row\">") 
         doors.map(door => {
-            alert(door.id)
+            
             returnString  = returnString+ door
         return ("")
         })
@@ -77,26 +79,35 @@ class App extends React.Component {
         this.setState({ show: false });
       };
     
-    handleDate(date){
 
-        
-       
+      checkDates = (date) =>{
+          
         DataFromREST.postData(date).then(res => {
             
             if(res.data.type !== 'FAIL'){
                 this.addDoorToCookie(res.data.id)
+                
             }
-            
             this.setState({
                 
                 modalData: res.data,
                 show: true
             });
-            
-           
-           
-            
+        })
         
+    };
+    handleDate(date){
+        DataFromREST.postData(date).then(res => {
+            
+            if(res.data.type !== 'FAIL'){
+                this.addDoorToCookie(res.data.id)
+                
+            }
+            this.setState({
+                
+                modalData: res.data,
+                show: true
+            });
         })
         
     }
@@ -104,11 +115,11 @@ class App extends React.Component {
         
         const doors = this.state.adventsData.map(item => {
             
-       return(<Door key={item.id} item={item} handleClick={this.handleDate} addToCookie={this.addDoorToCookie} doorData={this.state.cookie}/>)
+       return(<Door key={item.id} item={item}  checkDate={this.checkDates} doorData={this.state.cookie}/>)
         
         
     })
-
+    
     //  
         return (
             <div className="container">
