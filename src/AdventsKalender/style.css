@@ -13,7 +13,7 @@ body{
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: bottom;
- 
+  overflow: hidden;
   background-size: cover;
   text-align: center;
   display: block;
